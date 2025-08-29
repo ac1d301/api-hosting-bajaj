@@ -1,6 +1,5 @@
 const http = require('http');
 
-// Test data from the examples
 const testCases = [
     {
         name: "Test Case 1",
@@ -70,17 +69,16 @@ async function runTests() {
             console.log(`Status: ${result.statusCode}`);
             console.log('Response:');
             console.log(JSON.stringify(result.response, null, 2));
-            console.log('✅ Test passed!\n');
+            console.log('Test passed!\n');
             
         } catch (error) {
-            console.log(`❌ Test failed: ${error.message}\n`);
+            console.log(`Test failed: ${error.message}\n`);
         }
     }
     
-    console.log('🎉 All tests completed!');
+    console.log(' All tests completed!');
 }
 
-// Run tests if this file is executed directly
 if (require.main === module) {
     runTests();
 }
