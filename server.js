@@ -5,26 +5,21 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Helper function to check if a string is a number
 function isNumber(str) {
     return !isNaN(str) && !isNaN(parseFloat(str));
 }
 
-// Helper function to check if a string is an alphabet
 function isAlphabet(str) {
     return /^[a-zA-Z]+$/.test(str);
 }
 
-// Helper function to check if a string is a special character
 function isSpecialCharacter(str) {
     return /^[^a-zA-Z0-9\s]+$/.test(str);
 }
 
-// Helper function to convert string to alternating caps in reverse order
 function toAlternatingCapsReverse(str) {
     let result = '';
     let isUpper = true;
@@ -40,7 +35,6 @@ function toAlternatingCapsReverse(str) {
     return result;
 }
 
-// Main BFHL endpoint
 app.post('/bfhl', (req, res) => {
     try {
         const { data } = req.body;
@@ -53,7 +47,6 @@ app.post('/bfhl', (req, res) => {
             });
         }
 
-        // Initialize arrays and variables
         const evenNumbers = [];
         const oddNumbers = [];
         const alphabets = [];
@@ -61,7 +54,6 @@ app.post('/bfhl', (req, res) => {
         let sum = 0;
         let allAlphabets = '';
 
-        // Process each element in the data array
         data.forEach(item => {
             const str = String(item);
             
@@ -81,20 +73,18 @@ app.post('/bfhl', (req, res) => {
             }
         });
 
-        // Generate user_id (you can customize this)
-        const fullName = "john_doe"; // Change this to your name
+        const fullName = "sai_teja_v"; 
         const currentDate = new Date();
         const day = String(currentDate.getDate()).padStart(2, '0');
         const month = String(currentDate.getMonth() + 1).padStart(2, '0');
         const year = currentDate.getFullYear();
         const user_id = `${fullName}_${day}${month}${year}`;
 
-        // Prepare response
         const response = {
             is_success: true,
             user_id: user_id,
-            email: "john@xyz.com", // Change this to your email
-            roll_number: "ABCD123", // Change this to your roll number
+            email: "saitejav@xyz.com", 
+            roll_number: "22BRS1238", 
             odd_numbers: oddNumbers,
             even_numbers: evenNumbers,
             alphabets: alphabets,
@@ -114,7 +104,6 @@ app.post('/bfhl', (req, res) => {
     }
 });
 
-// Health check endpoint
 app.get('/', (req, res) => {
     res.json({
         message: "VIT BFHL API is running!",
@@ -124,7 +113,6 @@ app.get('/', (req, res) => {
     });
 });
 
-// Start server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     console.log(`BFHL endpoint: http://localhost:${PORT}/bfhl`);
