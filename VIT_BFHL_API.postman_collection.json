@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "vit-bfhl-api-collection",
+		"name": "VIT BFHL API Collection",
+		"description": "Complete test collection for VIT BFHL API with all required test cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Health check endpoint to verify API is running"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 1 - Mixed Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": [\"a\", \"1\", \"334\", \"4\", \"R\", \"$\"]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bfhl",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bfhl"
+					]
+				},
+				"description": "Test case with mixed data: alphabets, numbers, and special characters"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 2 - Complex Mixed Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": [\"2\", \"a\", \"y\", \"4\", \"&\", \"-\", \"*\", \"5\", \"92\", \"b\"]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bfhl",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bfhl"
+					]
+				},
+				"description": "Test case with more complex mixed data including multiple special characters"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 3 - Alphabets Only",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": [\"A\", \"ABcD\", \"DOE\"]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bfhl",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bfhl"
+					]
+				},
+				"description": "Test case with only alphabets (including mixed case)"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 4 - Numbers Only",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\"]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bfhl",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bfhl"
+					]
+				},
+				"description": "Test case with only numbers (mix of odd and even)"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 5 - Special Characters Only",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": [\"!\", \"@\", \"#\", \"$\", \"%\", \"^\"]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bfhl",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bfhl"
+					]
+				},
+				"description": "Test case with only special characters"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 6 - Empty Array",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": []\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bfhl",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bfhl"
+					]
+				},
+				"description": "Test case with empty array to test edge case handling"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Case 7 - Single Element",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": [\"hello\"]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bfhl",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bfhl"
+					]
+				},
+				"description": "Test case with single alphabet element"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Test script to validate responses",
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"Response has required fields\", function () {",
+					"    const response = pm.response.json();",
+					"    pm.expect(response).to.have.property('is_success');",
+					"    pm.expect(response).to.have.property('user_id');",
+					"    pm.expect(response).to.have.property('email');",
+					"    pm.expect(response).to.have.property('roll_number');",
+					"    pm.expect(response).to.have.property('odd_numbers');",
+					"    pm.expect(response).to.have.property('even_numbers');",
+					"    pm.expect(response).to.have.property('alphabets');",
+					"    pm.expect(response).to.have.property('special_characters');",
+					"    pm.expect(response).to.have.property('sum');",
+					"    pm.expect(response).to.have.property('concat_string');",
+					"});",
+					"",
+					"pm.test(\"is_success is true\", function () {",
+					"    const response = pm.response.json();",
+					"    pm.expect(response.is_success).to.be.true;",
+					"});",
+					"",
+					"pm.test(\"All arrays are arrays\", function () {",
+					"    const response = pm.response.json();",
+					"    pm.expect(response.odd_numbers).to.be.an('array');",
+					"    pm.expect(response.even_numbers).to.be.an('array');",
+					"    pm.expect(response.alphabets).to.be.an('array');",
+					"    pm.expect(response.special_characters).to.be.an('array');",
+					"});",
+					"",
+					"pm.test(\"Sum is a string\", function () {",
+					"    const response = pm.response.json();",
+					"    pm.expect(response.sum).to.be.a('string');",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string",
+			"description": "Base URL for local development"
+		}
+	]
+}
