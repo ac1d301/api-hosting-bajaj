@@ -57,11 +57,11 @@ function testAPI(testCase) {
 }
 
 async function runTests() {
-    console.log('🚀 Testing VIT BFHL API...\n');
+    console.log('Testing VIT BFHL API...\n');
     
     for (const testCase of testCases) {
         try {
-            console.log(`📋 ${testCase.name}`);
+            console.log(` ${testCase.name}`);
             console.log(`Input: [${testCase.data.join(', ')}]`);
             
             const result = await testAPI(testCase);
@@ -84,3 +84,4 @@ if (require.main === module) {
 }
 
 module.exports = { testAPI, runTests };
+
